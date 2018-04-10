@@ -1,19 +1,16 @@
-"""
-The traffic signs are 32x32 so you
-have to resize them to be 227x227 before
-passing them to AlexNet.
-"""
 import time
 import tensorflow as tf
 import numpy as np
 from scipy.misc import imread
 from caffe_classes import class_names
+from get_data import get_data
+get_data()
 from alexnet import AlexNet
 
+
 x = tf.placeholder(tf.float32, (None, 32, 32, 3))
-# TODO: Resize the images so they can be fed into AlexNet.
-# HINT: Use `tf.image.resize_images` to resize the images
-resized = ...
+# Resize the images so they can be fed into AlexNet.
+resized = tf.image.resize_images(x, (227, 227))
 
 assert resized is not Ellipsis, "resized needs to modify the placeholder image size to (227,227)"
 probs = AlexNet(resized)

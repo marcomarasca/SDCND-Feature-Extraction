@@ -1,11 +1,11 @@
-# NOTE: You don't need to edit this code.
 import time
 import tensorflow as tf
 import numpy as np
 from scipy.misc import imread
 from caffe_classes import class_names
+from get_data import get_data
+get_data()
 from alexnet import AlexNet
-
 
 # placeholders
 x = tf.placeholder(tf.float32, (None, 227, 227, 3))
